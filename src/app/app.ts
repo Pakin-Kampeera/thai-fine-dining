@@ -14,3 +14,4 @@ import { MessengerButtonComponent } from './components/messenger-button/messenge
 export class AppComponent {
   title = 'thai-fine-dining';
 }
+export { AppComponent as App };
