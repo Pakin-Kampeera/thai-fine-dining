@@ -2,16 +2,15 @@ name: Deploy to Vercel
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-    types: [ closed ]
+    branches: [main]
+    types: [closed]
 
 jobs:
   deploy:
-    if: ${{ github.event_name == 'push' || (github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main') }}
+    if: ${{ github.event_name == 'push' || (github.event.pull_request.merged && github.event.pull_request.base.ref == 'main') }}
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,8 +18,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -31,17 +30,11 @@ jobs:
       - name: Install Vercel CLI
         run: npm i -g vercel
 
-      - name: Mask Vercel token
-        run: echo "::add-mask::$VERCEL_TOKEN"
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          vercel pull --yes --token $VERCEL_TOKEN
-          vercel build --prod --token $VERCEL_TOKEN
-          vercel deploy --prebuilt --prod --token $VERCEL_TOKEN
+          echo $VERCEL_TOKEN
+          vercel --prod --yes
