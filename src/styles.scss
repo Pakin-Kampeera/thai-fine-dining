@@ -1,0 +1,126 @@
+/* Design System - Luxury Thai Fine Dining */
+
+:root {
+  /* Colors */
+  --color-gold: #D4AF37;
+  --color-gold-light: #F4C430;
+  --color-gold-dark: #AA8C2C;
+  --color-black: #1A1A1A;
+  --color-black-soft: #2C2C2C;
+  --color-white: #FFFFFF;
+  --color-white-soft: #F5F5F5;
+  --color-grey: #808080;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Kanit', sans-serif; /* Thai friendly font */
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-black);
+  color: var(--color-white-soft);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-gold);
+  font-weight: 400;
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.text-gold { color: var(--color-gold); }
+.text-center { text-align: center; }
+.uppercase { text-transform: uppercase; }
+
+.btn-gold {
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  padding: 12px 32px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+  
+  &:hover {
+    background: var(--color-gold);
+    color: var(--color-black);
+  }
+}
+
+.section-padding {
+  padding: var(--spacing-lg) 0;
+}
+
+// Lazy loading blur effect
+img[loading="lazy"] {
+  filter: blur(10px);
+  transition: filter 0.3s ease;
+  
+  &.loaded {
+    filter: blur(0);
+  }
+}
+
+// Class-based approach for better control
+.lazy-img {
+  filter: blur(10px);
+  opacity: 0.8;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  
+  &.loaded {
+    filter: blur(0);
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

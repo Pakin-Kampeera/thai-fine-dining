@@ -1,0 +1,47 @@
+<div class="home-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container text-center">
+      <h1 class="fade-in">{{ ts.translate().HERO_TITLE }}</h1>
+      <p class="fade-in delay-1">{{ ts.translate().HERO_SUBTITLE }}</p>
+      <div class="hero-actions fade-in delay-2">
+        <a routerLink="/reservation" class="btn-gold">{{ ts.translate().BTN_RESERVE }}</a>
+        <a routerLink="/menu" class="btn-outline">{{ ts.translate().BTN_MENU }}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Section -->
+  <section class="highlights section-padding">
+    <div class="container">
+      <h2 class="text-center">{{ ts.translate().SECTION_HIGHLIGHTS }}</h2>
+      <div class="highlight-grid">
+        <div class="highlight-item">
+          <div class="highlight-img">
+            <img [src]="'https://picsum.photos/seed/tomyum/800/600'" [alt]="ts.translate().DISH_TOMYUM" loading="lazy"
+              class="lazy-img" (load)="$event.target.classList.add('loaded')">
+          </div>
+          <h3>{{ ts.translate().DISH_TOMYUM }}</h3>
+          <p>{{ ts.translate().DISH_TOMYUM_DESC }}</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-img">
+            <img [src]="'https://picsum.photos/seed/padthai/800/600'" [alt]="ts.translate().DISH_PADTHAI" loading="lazy"
+              class="lazy-img" (load)="$event.target.classList.add('loaded')">
+          </div>
+          <h3>{{ ts.translate().DISH_PADTHAI }}</h3>
+          <p>{{ ts.translate().DISH_PADTHAI_DESC }}</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-img">
+            <img [src]="'https://picsum.photos/seed/greencurry/800/600'" [alt]="ts.translate().DISH_GREENCURRY"
+              loading="lazy" class="lazy-img" (load)="$event.target.classList.add('loaded')">
+          </div>
+          <h3>{{ ts.translate().DISH_GREENCURRY }}</h3>
+          <p>{{ ts.translate().DISH_GREENCURRY_DESC }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

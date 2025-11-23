@@ -1,0 +1,73 @@
+@use '../../../styles.scss' as *;
+
+.events-page {
+  padding-top: 120px;
+  min-height: 100vh;
+  background-color: #1A1A1A;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    color: #D4AF37;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+  }
+
+  .event-card {
+    background: #222;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-10px);
+      border-color: #D4AF37;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:hover .event-image img {
+      transform: scale(1.05);
+    }
+
+    .event-content {
+      padding: 2rem;
+
+      .event-date {
+        color: #D4AF37;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #fff;
+      }
+
+      p {
+        color: #999;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}

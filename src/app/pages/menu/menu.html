@@ -1,0 +1,26 @@
+<div class="menu-page section-padding">
+  <div class="container">
+    <h1 class="text-center">{{ ts.translate().NAV_MENU }}</h1>
+
+    <div class="menu-content">
+      <div *ngFor="let category of menuCategories()" class="menu-category">
+        <h2 class="category-title">{{ category.name }}</h2>
+        <div class="menu-items">
+          <div *ngFor="let item of category.items" class="menu-item">
+            <div class="item-image">
+              <img [src]="item.image" [alt]="item.name" loading="lazy" class="lazy-img"
+                (load)="$event.target.classList.add('loaded')">
+            </div>
+            <div class="item-content">
+              <div class="item-header">
+                <h3 class="item-name">{{ item.name }}</h3>
+                <span class="item-price">{{ item.price }}</span>
+              </div>
+              <p class="item-desc">{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<nav class="navbar" [class.open]="isMenuOpen">
+  <div class="container navbar-container">
+    <a routerLink="/" class="logo">
+      <span class="text-gold">ROYAL</span> THAI
+    </a>
+
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+        (click)="isMenuOpen = false">{{ ts.translate().NAV_HOME }}</a>
+      <a routerLink="/menu" routerLinkActive="active" (click)="isMenuOpen = false">{{ ts.translate().NAV_MENU }}</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="isMenuOpen = false">{{ ts.translate().NAV_ABOUT }}</a>
+      <a routerLink="/events" routerLinkActive="active" (click)="isMenuOpen = false">{{ ts.translate().NAV_EVENTS }}</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="isMenuOpen = false">{{ ts.translate().NAV_CONTACT
+        }}</a>
+      <a routerLink="/reservation" class="btn-gold" (click)="isMenuOpen = false">{{ ts.translate().BTN_RESERVE }}</a>
+
+      <div class="lang-selector">
+        <button class="lang-option" [class.active]="ts.currentLang() === 'en'" (click)="ts.setLang('en')">EN</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-option" [class.active]="ts.currentLang() === 'th'" (click)="ts.setLang('th')">TH</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-option" [class.active]="ts.currentLang() === 'zh'" (click)="ts.setLang('zh')">中文</button>
+      </div>
+    </div>
+  </div>
+</nav>

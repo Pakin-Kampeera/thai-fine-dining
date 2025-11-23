@@ -1,0 +1,51 @@
+<div class="reservation-page section-padding">
+  <div class="container">
+    <div class="form-container">
+      <h1 class="text-center">{{ ts.translate().NAV_RESERVE }}</h1>
+      <p class="text-center form-subtitle">{{ ts.translate().RESERVE_SUBTITLE }}</p>
+
+      <form (ngSubmit)="submitReservation()" #reservationForm="ngForm">
+        <div class="form-group">
+          <label>{{ ts.translate().FORM_NAME }}</label>
+          <input type="text" [(ngModel)]="formData.name" name="name" required
+            [placeholder]="ts.translate().FORM_NAME_PLACEHOLDER">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>{{ ts.translate().FORM_EMAIL }}</label>
+            <input type="email" [(ngModel)]="formData.email" name="email" required
+              [placeholder]="ts.translate().FORM_EMAIL_PLACEHOLDER">
+          </div>
+          <div class="form-group">
+            <label>{{ ts.translate().FORM_PHONE }}</label>
+            <input type="tel" [(ngModel)]="formData.phone" name="phone" required
+              [placeholder]="ts.translate().FORM_PHONE_PLACEHOLDER">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>{{ ts.translate().FORM_DATE }}</label>
+            <input type="date" [(ngModel)]="formData.date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label>{{ ts.translate().FORM_TIME }}</label>
+            <input type="time" [(ngModel)]="formData.time" name="time" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>{{ ts.translate().FORM_GUESTS }}</label>
+          <select [(ngModel)]="formData.guests" name="guests">
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8]" [value]="i">{{ i }} {{ i > 1 ? ts.translate().FORM_PERSONS :
+              ts.translate().FORM_PERSON }}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-gold submit-btn" [disabled]="!reservationForm.form.valid">{{
+          ts.translate().FORM_SUBMIT }}</button>
+      </form>
+    </div>
+  </div>
+</div>

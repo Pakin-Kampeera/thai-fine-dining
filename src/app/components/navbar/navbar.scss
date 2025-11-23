@@ -1,0 +1,132 @@
+@use '../../../styles.scss' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 1rem 0;
+  transition: 0.3s ease;
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    a {
+      font-family: 'Kanit', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      opacity: 0.8;
+      position: relative;
+
+      &:hover, &.active {
+        opacity: 1;
+        color: #D4AF37;
+      }
+
+      &.btn-gold {
+        opacity: 1;
+        color: #D4AF37;
+        padding: 8px 24px;
+        
+        &:hover {
+          color: #1A1A1A;
+        }
+      }
+    }
+  }
+
+  .lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .lang-option {
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 4px 8px;
+      font-size: 0.85rem;
+      transition: 0.3s;
+      cursor: pointer;
+      font-family: 'Kanit', sans-serif;
+      
+      &:hover {
+        color: rgba(212, 175, 55, 0.8);
+      }
+      
+      &.active {
+        color: #D4AF37;
+        font-weight: 600;
+      }
+    }
+    
+    .lang-divider {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.85rem;
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    flex-direction: column;
+    gap: 6px;
+    
+    .bar {
+      width: 24px;
+      height: 2px;
+      background-color: #D4AF37;
+      transition: 0.3s;
+    }
+  }
+
+  // Mobile Responsive
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #1A1A1A;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1.5rem;
+      transform: translateY(-150%);
+      transition: 0.5s ease;
+      z-index: -1;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    &.open .nav-links {
+      transform: translateY(0);
+    }
+  }
+}

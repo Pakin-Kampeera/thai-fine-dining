@@ -1,0 +1,20 @@
+<div class="events-page section-padding">
+  <div class="container">
+    <h1 class="text-center">{{ ts.translate().NAV_EVENTS }}</h1>
+
+    <div class="events-grid">
+      <div *ngFor="let event of events()" class="event-card">
+        <div class="event-image">
+          <img [src]="event.image" [alt]="event.title" loading="lazy" class="lazy-img"
+            (load)="$event.target.classList.add('loaded')">
+        </div>
+        <div class="event-content">
+          <div class="event-date">{{ event.date }}</div>
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.description }}</p>
+          <button class="btn-gold">{{ ts.translate().BTN_BOOK_NOW }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
